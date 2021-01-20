@@ -4,7 +4,7 @@ class Quest extends Equatable {
   final String name;
   final String description;
 
-  Quest(this.name, this.description);
+  Quest({this.name, this.description});
 
   isValidQuest() =>
       (name != null || description != null || name != "" || description != "");
