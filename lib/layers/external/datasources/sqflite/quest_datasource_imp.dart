@@ -35,14 +35,7 @@ class QuestDataSourceImp implements QuestDataSource {
 
     final List<Map<String, dynamic>> maps = await db.query(_questsTable);
 
-    final List<QuestDTO> quests = List();
-    maps.forEach((quest) {
-      final dto = QuestDTO(
-        name: quest["name"],
-        description: quest["description"],
-      );
-      quests.add(dto);
-    });
+    final List<QuestDTO> quests = maps.map((e) => QuestDTO.fromMap(e)).toList();
 
     return quests;
   }
@@ -51,9 +44,7 @@ class QuestDataSourceImp implements QuestDataSource {
   Future<void> save(QuestDTO dto) async {
     Database db = await createDatabase();
 
-    final Map<String, dynamic> questMap = {};
-    questMap['name'] = dto.name;
-    questMap['description'] = dto.description;
+    final Map<String, dynamic> questMap = QuestDTO.toMap(dto);
 
     return db.insert(_questsTable, questMap);
   }
