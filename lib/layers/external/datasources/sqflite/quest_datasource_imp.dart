@@ -19,7 +19,7 @@ class QuestDataSourceImp implements QuestDataSource {
       onCreate: (db, version) {
         db.execute("""
         CREATE TABLE $_questsTable(
-          id INTEGER PRIMARY KEY,
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
           name TEXT,
           description TEXT
         );
@@ -45,7 +45,7 @@ class QuestDataSourceImp implements QuestDataSource {
     Database db = await createDatabase();
 
     final Map<String, dynamic> questMap = QuestDTO.toMap(dto);
-
+    questMap['id'] = null;
     return db.insert(_questsTable, questMap);
   }
 }

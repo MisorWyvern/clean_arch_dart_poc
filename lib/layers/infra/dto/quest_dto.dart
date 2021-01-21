@@ -19,4 +19,16 @@ class QuestDTO {
 
   @override
   String toString() => 'QuestDTO(name: $name, description: $description)';
+
+  QuestDTO copyWith({
+    int id,
+    String name,
+    String description,
+  }) {
+    return QuestDTO(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+    );
+  }
 }

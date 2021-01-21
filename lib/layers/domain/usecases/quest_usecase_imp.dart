@@ -13,7 +13,7 @@ class QuestUseCaseImp implements QuestUseCase {
 
   @override
   Future<Either<Failure, List<Quest>>> findAll() async {
-    dynamic result = await _repository.findAll();
+    var result = await _repository.findAll();
     return result.fold(
       (left) => Left(
           UseCaseException("UseCase Exception: error on find all function.")),
@@ -27,7 +27,7 @@ class QuestUseCaseImp implements QuestUseCase {
       return Left(EntityException("EntityException: quest is not valid."));
     }
 
-    dynamic result = await _repository.save(quest);
+    var result = await _repository.save(quest);
     return result.fold(
       (left) =>
           Left(UseCaseException("UseCaseException: error on save function.")),

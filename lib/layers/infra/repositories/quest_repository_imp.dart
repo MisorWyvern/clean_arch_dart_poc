@@ -20,8 +20,10 @@ class QuestRepositoryImp implements QuestRepository {
   @override
   Future<Either<Failure, List<Quest>>> findAll() async {
     try {
-      dynamic result = await _datasource.findAll();
-      return Right(result);
+      var result = await _datasource.findAll();
+      List<Quest> quests = [];
+      quests = result.map((e) => _mapper.from(e)).toList().cast();
+      return Right(quests);
     } catch (ex) {
       return Left(RepositoryException(
           "RepositoryException: error on find all function."));

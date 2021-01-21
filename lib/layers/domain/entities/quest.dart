@@ -15,4 +15,7 @@ class Quest extends Equatable {
 
   @override
   List<Object> get props => [name, description];
+
+  @override
+  bool get stringify => true;
 }
