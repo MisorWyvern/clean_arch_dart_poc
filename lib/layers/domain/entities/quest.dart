@@ -7,7 +7,7 @@ class Quest extends Equatable {
 
   Quest({this.id, this.name, this.description});
 
-  isValidQuest() => (id < 0 ||
+  isValidQuest() => (
       name != null ||
       description != null ||
       name != "" ||

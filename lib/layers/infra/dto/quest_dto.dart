@@ -1,18 +1,20 @@
-class QuestDTO {
+import 'package:clean_arch_dart_poc/core/database/entity/entity.dart';
+
+class QuestDTO extends Entity{
   final int id;
   final String name;
   final String description;
 
   QuestDTO({this.id, this.name, this.description});
 
-  static Map<String, dynamic> toMap(QuestDTO dto) => {
-        "id": dto?.id ?? 0,
-        "name": dto?.name ?? "",
-        "description": dto?.description ?? "",
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "name": name ?? "",
+        "description": description ?? "",
       };
 
-  static QuestDTO fromMap(Map<String, dynamic> map) => QuestDTO(
-        id: map["id"] ?? 0,
+  QuestDTO fromMap(Map<String, dynamic> map) => QuestDTO(
+        id: map["id"],
         name: map["name"] ?? "",
         description: map["description"] ?? "",
       );
