@@ -25,7 +25,7 @@ class DatabaseHelper {
   }
 
   void _onCreate(Database db, int newVersion) async {
-    String s = await rootBundle.loadString("scripts/create_table.sql");
+    String s = await rootBundle.loadString("lib/core/database/scripts/create_table.sql");
     List<String> sqls = s.split(";");
     for (String sql in sqls) {
       if (sql.trim().isNotEmpty) {

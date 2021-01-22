@@ -1,21 +1,11 @@
+import 'package:clean_arch_dart_poc/app_module.dart';
 import 'package:flutter/material.dart';
-
-import 'layers/presenter/UI/pages/splash_screen_page.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 void main() {
-  runApp(CleanPOC());
-}
-
-class CleanPOC extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Clean Arch POC',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: SplashScreenPage(),
-    );
-  }
+  runApp(
+    ModularApp(
+      module: AppModule(),
+    ),
+  );
 }

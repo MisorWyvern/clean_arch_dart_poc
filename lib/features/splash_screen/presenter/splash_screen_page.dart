@@ -1,4 +1,3 @@
-import 'package:clean_arch_dart_poc/layers/presenter/UI/pages/quest_list_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreenPage extends StatefulWidget {
@@ -12,9 +11,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     super.initState();
 
     Future.delayed(Duration(seconds: 3)).then(
-      (value) => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => QuestListPage()),
-      ),
+      (value) => Navigator.pushReplacementNamed(context, "/questlist"),
     );
   }
 

@@ -1,12 +1,11 @@
-import 'package:clean_arch_dart_poc/layers/infra/dto/quest_dto.dart';
-import 'package:clean_arch_dart_poc/layers/infra/errors/repository_exception.dart';
-import 'package:dartz/dartz.dart';
-
 import 'package:clean_arch_dart_poc/core/errors/failure.dart';
 import 'package:clean_arch_dart_poc/core/mapper/mapper.dart';
-import 'package:clean_arch_dart_poc/layers/domain/entities/quest.dart';
-import 'package:clean_arch_dart_poc/layers/domain/repositories/quest_repository.dart';
-import 'package:clean_arch_dart_poc/layers/infra/datasources/quest_datasource.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/domain/entities/quest.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/domain/repositories/quest_repository.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/infra/datasources/quest_datasource.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/infra/dto/quest_dto.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/infra/errors/repository_exception.dart';
+import 'package:dartz/dartz.dart';
 
 class QuestRepositoryImp implements QuestRepository {
   final QuestDataSource _datasource;

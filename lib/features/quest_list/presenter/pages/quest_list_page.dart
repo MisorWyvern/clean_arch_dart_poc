@@ -1,32 +1,14 @@
-import 'package:clean_arch_dart_poc/core/mapper/mapper.dart';
-import 'package:clean_arch_dart_poc/layers/domain/repositories/quest_repository.dart';
-import 'package:clean_arch_dart_poc/layers/domain/usecases/quest_usecase.dart';
-import 'package:clean_arch_dart_poc/layers/domain/usecases/quest_usecase_imp.dart';
-import 'package:clean_arch_dart_poc/layers/external/datasources/sqflite/quest_datasource_imp.dart';
-import 'package:clean_arch_dart_poc/layers/infra/datasources/quest_datasource.dart';
-import 'package:clean_arch_dart_poc/layers/infra/mapper/quest_mapper.dart';
-import 'package:clean_arch_dart_poc/layers/infra/repositories/quest_repository_imp.dart';
-import 'package:clean_arch_dart_poc/layers/presenter/controller/quest_controller.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/presenter/controllers/quest_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../domain/usecases/quest_usecase.dart';
-import '../../controller/quest_controller.dart';
 
 class QuestListPage extends StatefulWidget {
   @override
   _QuestListPageState createState() => _QuestListPageState();
 }
 
-class _QuestListPageState extends State<QuestListPage> {
-  QuestController controller;
-
-  _QuestListPageState() {
-    Mapper _mapper = QuestMapper();
-    QuestDataSource _datasource = QuestDataSourceImp();
-    QuestRepository _repository = QuestRepositoryImp(_datasource, _mapper);
-    QuestUseCase _useCase = QuestUseCaseImp(_repository);
-    controller = QuestController(_useCase, _mapper);
-  }
+class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
 
   @override
   Widget build(BuildContext context) {

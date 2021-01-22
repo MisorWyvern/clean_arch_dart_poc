@@ -1,6 +1,6 @@
 import 'package:clean_arch_dart_poc/core/database/generic_database.dart';
-import 'package:clean_arch_dart_poc/layers/infra/datasources/quest_datasource.dart';
-import 'package:clean_arch_dart_poc/layers/infra/dto/quest_dto.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/infra/datasources/quest_datasource.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/infra/dto/quest_dto.dart';
 
 class QuestDataSourceImp extends GenericDatabase<QuestDTO>
     implements QuestDataSource {

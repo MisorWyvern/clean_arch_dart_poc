@@ -1,6 +1,6 @@
 import 'package:clean_arch_dart_poc/core/mapper/mapper.dart';
-import 'package:clean_arch_dart_poc/layers/domain/usecases/quest_usecase.dart';
-import 'package:clean_arch_dart_poc/layers/infra/dto/quest_dto.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/domain/usecases/quest_usecase.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/infra/dto/quest_dto.dart';
 
 class QuestController {
   final QuestUseCase _questUseCase;

@@ -1,6 +1,6 @@
 import 'package:clean_arch_dart_poc/core/mapper/mapper.dart';
-import 'package:clean_arch_dart_poc/layers/domain/entities/quest.dart';
-import 'package:clean_arch_dart_poc/layers/infra/dto/quest_dto.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/domain/entities/quest.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/infra/dto/quest_dto.dart';
 
 class QuestMapper implements Mapper<QuestDTO, Quest> {
   @override
