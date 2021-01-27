@@ -6,6 +6,7 @@ class CustomListTile extends StatelessWidget {
   final IconData icon;
   final Function onTap;
   final Function onLongPress;
+  final Function onCheckIconPressed;
 
   const CustomListTile({
     Key key,
@@ -14,6 +15,7 @@ class CustomListTile extends StatelessWidget {
     this.icon = Icons.wysiwyg,
     this.onTap,
     this.onLongPress,
+    this.onCheckIconPressed,
   }) : assert(name != null),
         assert(description != null),
         super(key: key);
@@ -33,7 +35,7 @@ class CustomListTile extends StatelessWidget {
         ),
         trailing: IconButton(
           icon: Icon(Icons.check_circle, color: Theme.of(context).accentColor,),
-          onPressed: () {},
+          onPressed: onCheckIconPressed,
         ),
         onTap: onTap,
         onLongPress: onLongPress,
