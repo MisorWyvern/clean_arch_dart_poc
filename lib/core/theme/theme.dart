@@ -11,8 +11,6 @@ final Color _almostBlack = Color(0xFF212121);
 final Color _darkGrey = Color(0xFF757575);
 final Color _lightGrey = Color(0xFFBDBDBD);
 
-
-
 ThemeData theme = ThemeData(
   primarySwatch: Colors.deepPurple,
   primaryColorDark: _darkpurple,
@@ -27,12 +25,14 @@ ThemeData theme = ThemeData(
     bodyText2: GoogleFonts.lato(
       color: _darkGrey,
     ),
-    headline1: GoogleFonts.pressStart2p(color: Colors.white, fontSize: _u*5),
-    headline2: GoogleFonts.pressStart2p(color: Colors.white, fontSize: _u*4),
-    headline3: GoogleFonts.lato(color: Colors.white, fontSize: _u*3.5),
-    headline4: GoogleFonts.lato(color: Colors.white, fontSize: _u*3),
-    headline5: GoogleFonts.lato(color: Colors.white, fontSize: _u*2.5),
-    headline6: GoogleFonts.lato(color: _almostBlack, fontSize: _u*2, fontWeight: FontWeight.bold),
+    headline1: GoogleFonts.pressStart2p(color: Colors.white, fontSize: _u * 5),
+    headline2: GoogleFonts.pressStart2p(color: Colors.white, fontSize: _u * 4),
+    headline3: GoogleFonts.lato(color: Colors.white, fontSize: _u * 3.5),
+    headline4: GoogleFonts.lato(color: Colors.white, fontSize: _u * 3),
+    headline5: GoogleFonts.lato(
+        color: Colors.white, fontSize: _u * 2, fontWeight: FontWeight.bold),
+    headline6: GoogleFonts.lato(
+        color: _almostBlack, fontSize: _u * 2, fontWeight: FontWeight.bold),
   ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
@@ -40,6 +40,7 @@ ThemeData theme = ThemeData(
           (states) => getColor(states)),
     ),
   ),
+  inputDecorationTheme: InputDecorationTheme(fillColor: _almostBlack),
   visualDensity: VisualDensity.adaptivePlatformDensity,
 );
 

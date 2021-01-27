@@ -16,25 +16,29 @@ class CustomListTile extends StatelessWidget {
     this.onTap,
     this.onLongPress,
     this.onCheckIconPressed,
-  }) : assert(name != null),
-        assert(description != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Icon(icon, color: Theme.of(context).textTheme.headline6.color,),
+        leading: Icon(
+          icon,
+          color: Theme.of(context).textTheme.headline6.color,
+        ),
         title: Text(
-          name,
+          name ?? "",
           style: Theme.of(context).textTheme.headline6,
         ),
         subtitle: Text(
-          description,
+          description ?? "",
           style: Theme.of(context).textTheme.bodyText2,
         ),
         trailing: IconButton(
-          icon: Icon(Icons.check_circle, color: Theme.of(context).accentColor,),
+          icon: Icon(
+            Icons.check_circle,
+            color: Theme.of(context).accentColor,
+          ),
           onPressed: onCheckIconPressed,
         ),
         onTap: onTap,

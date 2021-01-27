@@ -34,14 +34,9 @@ class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
           color: Theme.of(context).textTheme.headline1.color,
         ),
         onPressed: () {
-          showDialog(
-            context: context,
-            child: AddQuestDialog(
-              controller: controller,
-            ),
-          ).then(
-            (_) => setState(() => {}),
-          );
+          Navigator.of(context).pushNamed("questlist/addquest").then(
+                (_) => setState(() => {}),
+              );
         },
       ),
       body: FutureBuilder(
@@ -61,74 +56,12 @@ class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
                 return CustomListTile(
                   name: controller.questList[index].name,
                   description: controller.questList[index].description,
-                 );
+                );
               },
             ),
           );
         },
       ),
-    );
-  }
-}
-
-class AddQuestDialog extends StatefulWidget {
-  final QuestController controller;
-
-  const AddQuestDialog({Key key, @required this.controller}) : super(key: key);
-
-  @override
-  _AddQuestDialogState createState() => _AddQuestDialogState();
-}
-
-class _AddQuestDialogState extends State<AddQuestDialog> {
-  @override
-  Widget build(BuildContext context) {
-    return SimpleDialog(
-      contentPadding: EdgeInsets.all(8.0 * 2),
-      title: Text("Create Quest"),
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: TextField(
-            onChanged: (value) => widget.controller.dto =
-                widget.controller.dto.copyWith(name: value),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Name",
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: TextField(
-            onChanged: (value) => widget.controller.dto =
-                widget.controller.dto.copyWith(description: value),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Description",
-            ),
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SimpleDialogOption(
-              child: Text("Create".toUpperCase()),
-              onPressed: () {
-                widget.controller.save().then((value) => debugPrint(value));
-                Navigator.of(context).pop();
-              },
-            ),
-            SimpleDialogOption(
-              child: Text("Cancel".toUpperCase()),
-              onPressed: () {
-                debugPrint("cancelou");
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        ),
-      ],
     );
   }
 }
