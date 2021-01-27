@@ -17,17 +17,24 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
     return Container(
-      color: Theme.of(context).primaryColor,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [_theme.primaryColorLight, _theme.primaryColor, _theme.primaryColorDark],
+        ),
+      ),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "TEST\nSPLASH\nSCREEN",
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline2,
-            ),
+            Image.asset("assets/images/logo.png"),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0*2),
+              child: Text("DailyQs", style: _theme.textTheme.headline1,),
+            )
           ],
         ),
       ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+double u = 8.0;
 
 var theme = ThemeData(
   primarySwatch: Colors.deepPurple,
@@ -8,12 +11,13 @@ var theme = ThemeData(
   accentColor: Color(0xFF00BCD4),
   dividerColor: Color(0xFFBDBDBD),
   textTheme: TextTheme(
-    bodyText1: TextStyle(
+    bodyText1: GoogleFonts.lato(
       color: Color(0xFF212121),
     ),
-    bodyText2: TextStyle(
+    bodyText2: GoogleFonts.lato(
       color: Color(0xFF757575),
     ),
+    headline1: GoogleFonts.pressStart2p(color: Colors.white, fontSize: u*5),
   ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
