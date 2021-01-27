@@ -1,7 +1,7 @@
+import 'package:clean_arch_dart_poc/core/widgets/custom_list_tile.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/presenter/controllers/quest_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
 
 class QuestListPage extends StatefulWidget {
   @override
@@ -9,16 +9,30 @@ class QuestListPage extends StatefulWidget {
 }
 
 class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Quest List"),
-        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.help_rounded),
+            onPressed: () {},
+            tooltip: "Help",
+          ),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {},
+            tooltip: "Settings",
+          ),
+        ],
+        title: Text("Daily Quests List"),
+        centerTitle: false,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: Theme.of(context).textTheme.headline1.color,
+        ),
         onPressed: () {
           showDialog(
             context: context,
@@ -42,15 +56,14 @@ class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListView.builder(
-                itemCount: controller.questList?.length ?? 0,
-                itemBuilder: (context, index) {
-                  return Card(
-                                    child: ListTile(
-                      title: Text(controller.questList[index].name),
-                      subtitle: Text(controller.questList[index].description),
-                    ),
-                  );
-                }),
+              itemCount: controller.questList?.length ?? 0,
+              itemBuilder: (_, index) {
+                return CustomListTile(
+                  name: controller.questList[index].name,
+                  description: controller.questList[index].description,
+                 );
+              },
+            ),
           );
         },
       ),
@@ -77,7 +90,8 @@ class _AddQuestDialogState extends State<AddQuestDialog> {
         Padding(
           padding: const EdgeInsets.only(bottom: 8.0),
           child: TextField(
-            onChanged: (value) => widget.controller.dto = widget.controller.dto.copyWith(name: value),
+            onChanged: (value) => widget.controller.dto =
+                widget.controller.dto.copyWith(name: value),
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: "Name",
@@ -87,7 +101,8 @@ class _AddQuestDialogState extends State<AddQuestDialog> {
         Padding(
           padding: const EdgeInsets.only(bottom: 8.0),
           child: TextField(
-            onChanged: (value) => widget.controller.dto = widget.controller.dto.copyWith(description: value),
+            onChanged: (value) => widget.controller.dto =
+                widget.controller.dto.copyWith(description: value),
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: "Description",

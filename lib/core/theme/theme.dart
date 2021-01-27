@@ -1,23 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-double u = 8.0;
+double _u = 8.0;
 
-var theme = ThemeData(
+final Color _lightPurple = Color(0xFFD1C4E9);
+final Color _purple = Color(0xFF673AB7);
+final Color _darkpurple = Color(0xFF512DA8);
+final Color _cyan = Color(0xFF00BCD4);
+final Color _almostBlack = Color(0xFF212121);
+final Color _darkGrey = Color(0xFF757575);
+final Color _lightGrey = Color(0xFFBDBDBD);
+
+
+
+ThemeData theme = ThemeData(
   primarySwatch: Colors.deepPurple,
-  primaryColorDark: Color(0xFF512DA8),
-  primaryColorLight: Color(0xFFD1C4E9),
-  primaryColor: Color(0xFF673AB7),
-  accentColor: Color(0xFF00BCD4),
-  dividerColor: Color(0xFFBDBDBD),
+  primaryColorDark: _darkpurple,
+  primaryColorLight: _lightPurple,
+  primaryColor: _purple,
+  accentColor: _cyan,
+  dividerColor: _lightGrey,
   textTheme: TextTheme(
     bodyText1: GoogleFonts.lato(
-      color: Color(0xFF212121),
+      color: _almostBlack,
     ),
     bodyText2: GoogleFonts.lato(
-      color: Color(0xFF757575),
+      color: _darkGrey,
     ),
-    headline1: GoogleFonts.pressStart2p(color: Colors.white, fontSize: u*5),
+    headline1: GoogleFonts.pressStart2p(color: Colors.white, fontSize: _u*5),
+    headline2: GoogleFonts.pressStart2p(color: Colors.white, fontSize: _u*4),
+    headline3: GoogleFonts.lato(color: Colors.white, fontSize: _u*3.5),
+    headline4: GoogleFonts.lato(color: Colors.white, fontSize: _u*3),
+    headline5: GoogleFonts.lato(color: Colors.white, fontSize: _u*2.5),
+    headline6: GoogleFonts.lato(color: _almostBlack, fontSize: _u*2, fontWeight: FontWeight.bold),
   ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
