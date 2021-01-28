@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class SplashScreenPage extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     super.initState();
 
     Future.delayed(Duration(seconds: 3)).then(
-      (value) => Navigator.pushReplacementNamed(context, "/questlist"),
+      (value) => Modular.to.pushReplacementNamed("/questlist"),
     );
   }
 
@@ -23,7 +24,11 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [_theme.primaryColorLight, _theme.primaryColor, _theme.primaryColorDark],
+          colors: [
+            _theme.primaryColorLight,
+            _theme.primaryColor,
+            _theme.primaryColorDark
+          ],
         ),
       ),
       child: Center(
@@ -32,8 +37,11 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
           children: [
             Image.asset("assets/images/logo.png"),
             Padding(
-              padding: const EdgeInsets.only(top: 8.0*2),
-              child: Text("DailyQs", style: _theme.textTheme.headline1,),
+              padding: const EdgeInsets.only(top: 8.0 * 2),
+              child: Text(
+                "DailyQs",
+                style: _theme.textTheme.headline1,
+              ),
             )
           ],
         ),
