@@ -15,7 +15,16 @@ abstract class _QuestControllerBase with Store {
 
   @observable
   QuestDTO dto = QuestDTO();
-  List<QuestDTO> questList = [];
+
+  @observable
+  ObservableList<QuestDTO> questList = <QuestDTO>[].asObservable();
+
+  @computed
+  bool get isValidDto {
+    if (dto.name == null || dto.description == null) return false;
+    if (dto.name == "" || dto.description == "") return false;
+    return true;
+  }
 
   Future<String> updateQuestList() async {
     var result = await _questUseCase.findAll();
@@ -23,7 +32,9 @@ abstract class _QuestControllerBase with Store {
     return result.fold(
       (left) => "Something when wrong:" + left.props[0],
       (right) {
-        questList = right.map((e) => _mapper.to(e)).toList().cast();
+        List<QuestDTO> dtoList =
+            right.map((e) => _mapper.to(e)).toList().cast();
+        questList = dtoList.asObservable();
         return "Update List Success!";
       },
     );
@@ -34,7 +45,10 @@ abstract class _QuestControllerBase with Store {
 
     return result.fold(
       (left) => ("Something when wrong: " + left.props[0]),
-      (right) => ("Save Success!"),
+      (right) {
+        dto = dto.copyWith(name: "", description: "", id: null);
+        return ("Save Success!");
+      },
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:clean_arch_dart_poc/core/widgets/custom_list_tile.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/presenter/controllers/quest_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class QuestListPage extends StatefulWidget {
@@ -34,9 +35,7 @@ class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
           color: Theme.of(context).textTheme.headline1.color,
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed("questlist/addquest").then(
-                (_) => setState(() => {}),
-              );
+          Modular.to.pushNamed("questlist/addquest");
         },
       ),
       body: FutureBuilder(
@@ -50,12 +49,16 @@ class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
 
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ListView.builder(
-              itemCount: controller.questList?.length ?? 0,
-              itemBuilder: (_, index) {
-                return CustomListTile(
-                  name: controller.questList[index].name,
-                  description: controller.questList[index].description,
+            child: Observer(
+              builder: (_) {
+                return ListView.builder(
+                  itemCount: controller.questList?.length ?? 0,
+                  itemBuilder: (_, index) {
+                    return CustomListTile(
+                      name: controller.questList[index].name,
+                      description: controller.questList[index].description,
+                    );
+                  },
                 );
               },
             ),

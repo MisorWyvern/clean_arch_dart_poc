@@ -40,8 +40,9 @@ class _AddQuestPageState extends ModularState<AddQuestPage, QuestController> {
                 CustomButton(
                   text: "create",
                   onTap: () async {
+                    if (controller.isValidDto == false) return;
                     await controller.save();
-                    Navigator.of(context).pop();
+                    Modular.to.pushNamed("questlist/");
                   },
                 ),
                 Text(
