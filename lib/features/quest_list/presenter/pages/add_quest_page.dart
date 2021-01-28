@@ -42,7 +42,7 @@ class _AddQuestPageState extends ModularState<AddQuestPage, QuestController> {
                   onTap: () async {
                     if (controller.isValidDto == false) return;
                     await controller.save();
-                    Modular.to.pushNamed("questlist/");
+                    Modular.to.pop();
                   },
                 ),
                 Text(
