@@ -2,8 +2,8 @@ import 'package:clean_arch_dart_poc/app_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'features/splash_screen/splash_screen_module.dart';
 import 'features/quest_list/quest_list_module.dart';
-import 'features/splash_screen/presenter/splash_screen_page.dart';
 
 class AppModule extends MainModule {
   @override
@@ -14,7 +14,7 @@ class AppModule extends MainModule {
 
   @override
   List<ModularRouter> get routers => [
-    ModularRouter("/", child: (_,__) => SplashScreenPage()),
-    ModularRouter("/questlist", module: QuestListModule()),
-  ];
+        ModularRouter("/", module: SplashScreenModule()),
+        ModularRouter("/questlist", module: QuestListModule()),
+      ];
 }
