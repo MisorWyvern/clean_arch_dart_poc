@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:clean_arch_dart_poc/features/splash_screen/presenter/controllers/splash_screen_controller.dart';
 
 class SplashScreenPage extends StatefulWidget {
   @override
   _SplashScreenPageState createState() => _SplashScreenPageState();
 }
 
-class _SplashScreenPageState extends State<SplashScreenPage> {
+class _SplashScreenPageState
+    extends ModularState<SplashScreenPage, SplashScreenController> {
   @override
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 3)).then(
+    Future.delayed(Duration(seconds: controller.delayInSeconds)).then(
       (value) => Modular.to.pushReplacementNamed("/questlist"),
     );
   }
