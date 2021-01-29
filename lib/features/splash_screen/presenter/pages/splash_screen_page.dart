@@ -10,15 +10,6 @@ class SplashScreenPage extends StatefulWidget {
 class _SplashScreenPageState
     extends ModularState<SplashScreenPage, SplashScreenController> {
   @override
-  void initState() {
-    super.initState();
-
-    Future.delayed(Duration(seconds: controller.delayInSeconds)).then(
-      (value) => Modular.to.pushReplacementNamed("/questlist"),
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     return Container(
