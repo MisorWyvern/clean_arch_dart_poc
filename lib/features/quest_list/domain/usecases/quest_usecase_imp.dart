@@ -23,7 +23,7 @@ class QuestUseCaseImp implements QuestUseCase {
 
   @override
   Future<Either<Failure, Quest>> save(Quest quest) async {
-    if (quest.isValidQuest() == false) {
+    if (quest.isValidQuest == false) {
       return Left(EntityException("EntityException: quest is not valid."));
     }
 
