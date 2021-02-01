@@ -7,14 +7,11 @@ class Quest extends Equatable {
 
   Quest({this.id, this.name, this.description});
 
-  isValidQuest() => (
-      name != null ||
-      description != null ||
-      name != "" ||
-      description != "");
+  isValidQuest() =>
+      (name != null || description != null || name != "" || description != "");
 
   @override
-  List<Object> get props => [name, description];
+  List<Object> get props => [id, name, description];
 
   @override
   bool get stringify => true;

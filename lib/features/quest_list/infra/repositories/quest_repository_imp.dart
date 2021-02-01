@@ -40,4 +40,16 @@ class QuestRepositoryImp implements QuestRepository {
           RepositoryException("RepositoryException: error on save function."));
     }
   }
+
+  @override
+  Future<Either<Failure, int>> delete(int id) async {
+    try {
+      var result = await _datasource.delete(id);
+      return Right(result);
+    } catch (ex) {
+      return Left(
+        RepositoryException("RepositoryException: error on delete function."),
+      );
+    }
+  }
 }
