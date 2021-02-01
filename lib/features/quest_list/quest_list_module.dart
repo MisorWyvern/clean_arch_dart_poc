@@ -1,3 +1,4 @@
+import 'package:clean_arch_dart_poc/features/quest_list/domain/usecases/delete_quest_usecase_imp.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/domain/usecases/quest_usecase_imp.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/external/datasources/sqflite/quest_datasource_imp.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/infra/mapper/quest_mapper.dart';
@@ -14,7 +15,8 @@ class QuestListModule extends ChildModule {
         Bind((i) => QuestDataSourceImp()),
         Bind((i) => QuestRepositoryImp(i.get(), i.get())),
         Bind((i) => QuestUseCaseImp(i.get())),
-        Bind((i) => QuestController(i.get(), i.get())),
+        Bind((i) => DeleteQuestUseCaseImp(i.get())),
+        Bind((i) => QuestController(i.get(), i.get(), i.get())),
       ];
 
   @override

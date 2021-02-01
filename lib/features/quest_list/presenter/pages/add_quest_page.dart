@@ -41,7 +41,8 @@ class _AddQuestPageState extends ModularState<AddQuestPage, QuestController> {
                   text: "create",
                   onTap: () async {
                     if (controller.isValidDto == false) return;
-                    await controller.save();
+                    String result = await controller.save();
+                    debugPrint(result);
                     Modular.to.pop();
                   },
                 ),

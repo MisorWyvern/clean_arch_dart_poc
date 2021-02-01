@@ -1,3 +1,4 @@
+import 'package:clean_arch_dart_poc/core/widgets/custom_alert_dialog.dart';
 import 'package:clean_arch_dart_poc/core/widgets/custom_list_tile.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/presenter/controllers/quest_controller.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +56,23 @@ class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
                   itemCount: controller.questList?.length ?? 0,
                   itemBuilder: (_, index) {
                     return CustomListTile(
+                      onLongPress: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => CustomAlertDialog(
+                            title: "Would you like to delete this Quest?",
+                            bodyText:
+                                "Quest:\n${controller.questList[index].name}\n${controller.questList[index].description}",
+                            onConfirm: () async {
+                              String result = await controller
+                                  .delete(controller.questList[index].id);
+                              debugPrint(result);
+                              Modular.to.pop();
+                            },
+                          ),
+                          barrierDismissible: false,
+                        );
+                      },
                       name: controller.questList[index].name,
                       description: controller.questList[index].description,
                     );
