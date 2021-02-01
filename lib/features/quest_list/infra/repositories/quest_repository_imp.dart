@@ -33,8 +33,9 @@ class QuestRepositoryImp implements QuestRepository {
   Future<Either<Failure, Quest>> save(Quest quest) async {
     try {
       QuestDTO dto = _mapper.to(quest);
-      await _datasource.save(dto);
-      return Right(quest);
+      int id = await _datasource.save(dto);
+      dto = dto.copyWith(id: id);
+      return Right(_mapper.from(dto));
     } catch (ex) {
       return Left(
           RepositoryException("RepositoryException: error on save function."));
