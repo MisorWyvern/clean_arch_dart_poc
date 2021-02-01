@@ -58,7 +58,7 @@ class CustomAlertDialog extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Icon(Icons.delete,
+                      Icon(Icons.close,
                           color: Theme.of(context).textTheme.headline5.color),
                       Text(
                         'Cancel',
