@@ -10,7 +10,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../../core/mocks/quest_list_mocks.dart';
+import 'mocks/mock_quest_repository.dart';
 
 void main() {
   QuestRepository _repository;
@@ -83,6 +83,9 @@ void main() {
 
     var result = await _useCase.save(_testQuest);
 
-    expect(result, Left<Failure, Quest>(UseCaseException("UseCaseException: error on save function.")));
+    expect(
+        result,
+        Left<Failure, Quest>(
+            UseCaseException("UseCaseException: error on save function.")));
   });
 }
