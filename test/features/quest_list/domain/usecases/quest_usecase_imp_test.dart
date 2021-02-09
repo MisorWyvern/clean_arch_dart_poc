@@ -10,7 +10,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../../core/mocks/quest_list_mocks.dart';
+import 'mocks/mock_quest_repository.dart';
 
 void main() {
   QuestRepository _repository;
@@ -29,7 +29,7 @@ void main() {
 
     var result = await _useCase.findAll();
 
-    expect(result, Right(_mockQuestList));
+    expect(result | null, _mockQuestList);
   });
 
   test("Should return a Failure if findAll call fails", () async {
@@ -38,10 +38,8 @@ void main() {
 
     var result = await _useCase.findAll();
 
-    expect(
-        result,
-        Left<Failure, List<Quest>>(UseCaseException(
-            "UseCase Exception: error on find all function.")));
+    expect(result, isA<Left>());
+    expect(result.fold(id, id), isA<UseCaseException>());
   });
 
   test("Should return a quest on save call", () async {
@@ -56,7 +54,7 @@ void main() {
 
     var result = await _useCase.save(_testQuest);
 
-    expect(result, Right<Failure, Quest>(_mockQuestList[0]));
+    expect(result.getOrElse(() => null), _mockQuestList[0]);
   });
 
   test("Should return a Failure on save call with invalid Quest", () async {
@@ -64,10 +62,8 @@ void main() {
 
     var result = await _useCase.save(_testQuest);
 
-    expect(
-        result,
-        Left<Failure, Quest>(
-            EntityException("EntityException: quest is not valid.")));
+    expect(result.isLeft(), true);
+    expect(result.fold(id, id), isA<EntityException>());
   });
 
   test("Should return a Failure on save call with repository error", () async {
@@ -83,6 +79,7 @@ void main() {
 
     var result = await _useCase.save(_testQuest);
 
-    expect(result, Left<Failure, Quest>(UseCaseException("UseCaseException: error on save function.")));
+    expect(result.isLeft(), true);
+    expect(result.fold(id, id), isA<UseCaseException>());
   });
 }
