@@ -26,7 +26,7 @@ void main() {
 
     var result = await _useCase.delete(_testId);
 
-    expect(result, Right<Failure, int>(1));
+    expect(result | null, 1);
   });
 
   test("Should return a Failure on delete call if id was not found or invalid",
@@ -38,9 +38,6 @@ void main() {
 
     var result = await _useCase.delete(_testId);
 
-    expect(
-        result,
-        Left<Failure, int>(
-            UseCaseException("UseCase Exception: error on delete function.")));
+    expect(result.fold(id, id), isA<UseCaseException>());
   });
 }
