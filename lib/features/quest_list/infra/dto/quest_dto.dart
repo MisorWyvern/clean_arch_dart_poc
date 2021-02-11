@@ -1,6 +1,6 @@
 import 'package:clean_arch_dart_poc/core/database/entity/entity.dart';
 
-class QuestDTO extends Entity{
+class QuestDTO extends Entity {
   final int id;
   final String name;
   final String description;
@@ -33,4 +33,17 @@ class QuestDTO extends Entity{
       description: description ?? this.description,
     );
   }
+
+  @override
+  bool operator ==(Object o) {
+    if (identical(this, o)) return true;
+
+    return o is QuestDTO &&
+        o.id == id &&
+        o.name == name &&
+        o.description == description;
+  }
+
+  @override
+  int get hashCode => id.hashCode ^ name.hashCode ^ description.hashCode;
 }
