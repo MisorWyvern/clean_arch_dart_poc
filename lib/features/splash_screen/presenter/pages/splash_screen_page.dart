@@ -13,6 +13,7 @@ class _SplashScreenPageState
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     return Container(
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -24,20 +25,18 @@ class _SplashScreenPageState
           ],
         ),
       ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("assets/images/logo.png"),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0 * 2),
-              child: Text(
-                "DailyQs",
-                style: _theme.textTheme.headline1,
-              ),
-            )
-          ],
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset("assets/images/logo.png"),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0 * 2),
+            child: Text(
+              "DailyQs",
+              style: _theme.textTheme.headline1,
+            ),
+          )
+        ],
       ),
     );
   }

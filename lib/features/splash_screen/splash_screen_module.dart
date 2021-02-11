@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 class SplashScreenModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind((i) => SplashScreenController()),
+        Bind<SplashScreenController>((i) => SplashScreenController()),
       ];
 
   @override
