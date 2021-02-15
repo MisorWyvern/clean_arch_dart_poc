@@ -56,6 +56,7 @@ class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
                   itemCount: controller.questList?.length ?? 0,
                   itemBuilder: (_, index) {
                     return CustomListTile(
+                      onCheckIconPressed: (){},
                       onLongPress: () {
                         showDialog(
                           context: context,

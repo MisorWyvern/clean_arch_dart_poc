@@ -34,12 +34,16 @@ class CustomListTile extends StatelessWidget {
           description ?? "",
           style: Theme.of(context).textTheme.bodyText2,
         ),
-        trailing: IconButton(
-          icon: Icon(
-            Icons.check_circle,
+        trailing: Container(
+          width: 8.0 * 7,
+          child: RaisedButton(
             color: Theme.of(context).accentColor,
+            onPressed: onCheckIconPressed,
+            child: Icon(
+              Icons.check,
+              color: Theme.of(context).textTheme.headline5.color,
+            ),
           ),
-          onPressed: onCheckIconPressed,
         ),
         onTap: onTap,
         onLongPress: onLongPress,
