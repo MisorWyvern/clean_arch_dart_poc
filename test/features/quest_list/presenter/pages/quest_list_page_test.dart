@@ -7,6 +7,19 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+// class SpyQuestListModule extends QuestListModule {
+//   @override
+//   List<ModularRouter> get routers => [
+//         ModularRouter("/addquest", child: (_, __) => Container()),
+//         ...super.routers,
+//       ];
+
+//   @override
+//   List<Bind> get binds => [
+//         ...super.binds,
+//       ];
+// }
+
 main() {
   initModule(QuestListModule(), initialModule: true);
   QuestController _controller;
@@ -31,4 +44,14 @@ main() {
     expect(btnSettings, findsOneWidget);
     expect(btnAdd, findsOneWidget);
   });
+
+  // testWidgets("Should redirect to AddQuestPage", (WidgetTester _tester) async {
+  //   await _tester.pumpWidget(buildTestableWidget(
+  //     QuestListPage(),
+  //   ));
+
+  //   final btnAdd = find.widgetWithIcon(FloatingActionButton, Icons.add);
+
+  //   await _tester.tap(btnAdd);
+  // });
 }

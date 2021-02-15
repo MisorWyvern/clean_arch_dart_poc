@@ -36,7 +36,7 @@ class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
           color: Theme.of(context).textTheme.headline1.color,
         ),
         onPressed: () {
-          Modular.to.pushNamed("questlist/addquest");
+          Modular.link.pushNamed("/addquest");
         },
       ),
       body: FutureBuilder(
