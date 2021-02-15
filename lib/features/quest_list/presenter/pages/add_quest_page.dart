@@ -1,7 +1,7 @@
 import 'package:clean_arch_dart_poc/core/widgets/custom_button.dart';
 import 'package:clean_arch_dart_poc/core/widgets/custom_list_tile.dart';
 import 'package:clean_arch_dart_poc/core/widgets/custom_text_field.dart';
-import 'package:clean_arch_dart_poc/features/quest_list/presenter/controllers/quest_controller.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/presenter/controllers/add_quest_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -11,7 +11,8 @@ class AddQuestPage extends StatefulWidget {
   _AddQuestPageState createState() => _AddQuestPageState();
 }
 
-class _AddQuestPageState extends ModularState<AddQuestPage, QuestController> {
+class _AddQuestPageState
+    extends ModularState<AddQuestPage, AddQuestPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +29,12 @@ class _AddQuestPageState extends ModularState<AddQuestPage, QuestController> {
                 CustomTextField(
                   icon: Icons.wysiwyg,
                   label: "Name",
-                  onChanged: (value) =>
-                      controller.dto = controller.dto.copyWith(name: value),
+                  onChanged: (value) => controller.name = value,
                 ),
                 CustomTextField(
                   icon: Icons.subject,
                   label: "Description",
-                  onChanged: (value) => controller.dto =
-                      controller.dto.copyWith(description: value),
+                  onChanged: (value) => controller.description = value,
                 ),
                 CustomButton(
                   text: "create",
@@ -53,8 +52,8 @@ class _AddQuestPageState extends ModularState<AddQuestPage, QuestController> {
                 Observer(
                   builder: (_) {
                     return CustomListTile(
-                        name: controller.dto.name,
-                        description: controller.dto.description);
+                        name: controller.name,
+                        description: controller.description);
                   },
                 )
               ],

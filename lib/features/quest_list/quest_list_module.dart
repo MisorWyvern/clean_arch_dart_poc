@@ -7,6 +7,7 @@ import 'package:clean_arch_dart_poc/features/quest_list/external/datasources/sqf
 import 'package:clean_arch_dart_poc/features/quest_list/infra/datasources/quest_datasource.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/infra/mapper/quest_mapper.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/infra/repositories/quest_repository_imp.dart';
+import 'package:clean_arch_dart_poc/features/quest_list/presenter/controllers/add_quest_page_controller.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/presenter/controllers/quest_controller.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/presenter/pages/add_quest_page.dart';
 import 'package:clean_arch_dart_poc/features/quest_list/presenter/pages/quest_list_page.dart';
@@ -23,6 +24,7 @@ class QuestListModule extends ChildModule {
         Bind<QuestUseCase>((i) => QuestUseCaseImp(i.get())),
         Bind<DeleteQuestUseCase>((i) => DeleteQuestUseCaseImp(i.get())),
         Bind((i) => QuestController(i.get(), i.get(), i.get())),
+        Bind((i) => AddQuestPageController()),
       ];
 
   @override
