@@ -36,7 +36,7 @@ class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
           color: Theme.of(context).textTheme.headline1.color,
         ),
         onPressed: () {
-          Modular.link.pushNamed("/addquest");
+          Modular.to.pushNamed("/questlist/addquest");
         },
       ),
       body: FutureBuilder(
@@ -56,7 +56,7 @@ class _QuestListPageState extends ModularState<QuestListPage, QuestController> {
                   itemCount: controller.questList?.length ?? 0,
                   itemBuilder: (_, index) {
                     return CustomListTile(
-                      onCheckIconPressed: (){},
+                      onCheckIconPressed: () {},
                       onLongPress: () {
                         showDialog(
                           context: context,

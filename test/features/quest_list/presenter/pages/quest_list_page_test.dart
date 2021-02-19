@@ -7,21 +7,22 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-// class SpyQuestListModule extends QuestListModule {
-//   @override
-//   List<ModularRouter> get routers => [
-//         ModularRouter("/addquest", child: (_, __) => Container()),
-//         ...super.routers,
-//       ];
+class SpyQuestListModule extends QuestListModule {
+  final prefix = "/questlist";
+  @override
+  List<ModularRouter> get routers => [
+        ModularRouter(prefix + "/addquest", child: (_, __) => Container()),
+        // ...super.routers,
+      ];
 
-//   @override
-//   List<Bind> get binds => [
-//         ...super.binds,
-//       ];
-// }
+  @override
+  List<Bind> get binds => [
+        ...super.binds,
+      ];
+}
 
 main() {
-  initModule(QuestListModule(), initialModule: true);
+  initModule(SpyQuestListModule(), initialModule: true);
   QuestController _controller;
 
   setUp(() {
@@ -45,13 +46,13 @@ main() {
     expect(btnAdd, findsOneWidget);
   });
 
-  // testWidgets("Should redirect to AddQuestPage", (WidgetTester _tester) async {
-  //   await _tester.pumpWidget(buildTestableWidget(
-  //     QuestListPage(),
-  //   ));
+  testWidgets("Should redirect to AddQuestPage", (WidgetTester _tester) async {
+    await _tester.pumpWidget(buildTestableWidget(
+      QuestListPage(),
+    ));
 
-  //   final btnAdd = find.widgetWithIcon(FloatingActionButton, Icons.add);
+    final btnAdd = find.widgetWithIcon(FloatingActionButton, Icons.add);
 
-  //   await _tester.tap(btnAdd);
-  // });
+    await _tester.tap(btnAdd);
+  });
 }
